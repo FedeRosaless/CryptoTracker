@@ -69,7 +69,11 @@ export const ImageValue = styled.Image`
   padding-top: 2px;
 `;
 
-export const Percent = styled.Text`
+interface Props {
+  percent: boolean;
+}
+
+export const Percent = styled.Text<Props>`
   font-size: 16px;
-  color: ${({percent}: {percent: boolean}) => (percent ? 'red' : 'green')};
+  color: ${({percent}) => (percent ? 'red' : 'green')};
 `;

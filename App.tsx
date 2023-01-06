@@ -1,7 +1,7 @@
-import React, {type PropsWithChildren} from 'react';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import CryptoList from './src/screens/CryptoList/Index';
-import AddCrypto from './src/screens/AddCrypto/Index';
+import CryptoList from './src/screens/CryptoList';
+import AddCrypto from './src/screens/AddCrypto';
 import {NavigationContainer} from '@react-navigation/native';
 import theme from './src/utils/theme';
 

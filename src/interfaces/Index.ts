@@ -5,7 +5,7 @@ export interface Crypto {
   symbol: string;
   slug: string;
   market_data: {
-    price_usd: Number;
-    percent_change_usd_last_24_hours: Number;
+    price_usd: number;
+    percent_change_usd_last_24_hours: number;
   };
 }

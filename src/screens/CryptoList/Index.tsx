@@ -1,9 +1,9 @@
 import {TouchableOpacity, FlatList} from 'react-native';
 import {BlueText, Container, ContainerFlatList} from './style';
-import CryptoItem from '../../components/cryptoItem/Index';
+import CryptoItem from '../../components/CryptoItem';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import Header from '../../components/header/Index';
+import Header from '../../components/Header';
 
 const crypto = [
   {
@@ -41,19 +41,16 @@ const crypto = [
   },
 ];
 
-type Nav = {
-  navigate: (value: string) => void;
-};
-
 const CryptoList = () => {
-  const {navigate} = useNavigation<Nav>();
+  const {navigate} = useNavigation();
+
   return (
     <Container>
       <Header />
       <ContainerFlatList>
         <FlatList
           data={crypto}
-          keyExtractor={item => item.id}
+          keyExtractor={({id}) => id}
           renderItem={({item}) => <CryptoItem crypto={item} />}
           ListFooterComponent={
             <TouchableOpacity onPress={() => navigate('AddCrypto')}>
