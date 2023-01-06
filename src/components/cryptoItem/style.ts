@@ -54,6 +54,7 @@ export const Value = styled.Text`
   color: ${theme.colors.black};
   text-align: right;
 `;
+
 export const ArrowContainer = styled.View`
   display: flex;
   text-align: center;
