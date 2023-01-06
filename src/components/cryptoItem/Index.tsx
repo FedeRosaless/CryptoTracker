@@ -44,7 +44,7 @@ const CryptoItem = ({crypto: {name, symbol, img, market_data}}: Props) => (
             }
           />
           <Percent percent={market_data?.percent_change_usd_last_24_hours < 0}>
-            {Math.abs(market_data?.percent_change_usd_last_24_hours as number)}%
+            {Math.abs(market_data?.percent_change_usd_last_24_hours)}%
           </Percent>
         </ArrowContainer>
       </ValueContainer>
