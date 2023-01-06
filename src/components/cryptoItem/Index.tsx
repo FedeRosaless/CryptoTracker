@@ -16,7 +16,6 @@ import {
 import React, {FC} from 'react';
 import decreaseArrow from '../../assets/decreaseArrow.png';
 import IncrementArrow from '../../assets/increaseArrow.png';
-
 import {Crypto} from '../../interfaces/Index';
 import {View} from 'react-native';
 
@@ -55,8 +54,7 @@ const CryptoItem: FC<Props> = ({
     </ValueContainer>
   </Container>
   <Separator />
-
-  </>
+ </>
 );
 
 export default CryptoItem;
