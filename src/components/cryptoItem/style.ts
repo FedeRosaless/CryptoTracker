@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import theme from '../../utils/theme';
-import {Props} from '../../interfaces';
+import {Props} from './types';
 
 export const Container = styled.View`
   padding-top: 28px;

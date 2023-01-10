@@ -9,7 +9,3 @@ export interface Crypto {
     percent_change_usd_last_24_hours: number;
   };
 }
-
-export interface Props {
-  percent: boolean;
-}
