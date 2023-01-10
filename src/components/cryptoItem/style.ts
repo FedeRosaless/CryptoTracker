@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import theme from '../../utils/theme';
+import {Props} from '../../interfaces';
 
 export const Container = styled.View`
   padding-top: 28px;
@@ -69,11 +70,7 @@ export const ImageValue = styled.Image`
   padding-top: 2px;
 `;
 
-interface Props {
-  percent: boolean;
-}
-
 export const Percent = styled.Text<Props>`
   font-size: 16px;
-  color: ${({percent}) => (percent ? 'red' : 'green')};
+  color: ${({percent}) => (percent ? theme.colors.red : theme.colors.green)};
 `;
