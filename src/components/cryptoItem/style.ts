@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
-import theme from '../../utils/theme';
-import {Props} from './types';
+import {PercentProps} from './types';
 
 export const Container = styled.View`
   padding-top: 28px;
@@ -9,14 +8,14 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom-color: ${theme.colors.black};
+  border-bottom-color: ${({theme}) => theme.colors.black};
 `;
 
 export const Separator = styled.View`
   height: 1px;
   width: 100%;
   margin-top: 11px;
-  background-color: ${theme.colors.dividerGray};
+  background-color: ${({theme}) => theme.colors.dividerGray};
 `;
 
 export const LogoContainer = styled.View`
@@ -30,13 +29,13 @@ export const NamesContainer = styled.View`
 `;
 
 export const Name = styled.Text`
-  color: ${theme.colors.black};
+  color: ${({theme}) => theme.colors.black};
   font-size: 17px;
   font-weight: 500;
 `;
 
 export const Symbol = styled.Text`
-  color: ${theme.colors.gray};
+  color: ${({theme}) => theme.colors.gray};
   font-size: 15px;
 `;
 
@@ -52,7 +51,7 @@ export const ValueContainer = styled.View`
 export const Value = styled.Text`
   font-size: 19px;
   font-weight: 500;
-  color: ${theme.colors.black};
+  color: ${({theme}) => theme.colors.black};
   text-align: right;
 `;
 export const ArrowContainer = styled.View`
@@ -70,7 +69,8 @@ export const ImageValue = styled.Image`
   padding-top: 2px;
 `;
 
-export const Percent = styled.Text<Props>`
+export const Percent = styled.Text<PercentProps>`
   font-size: 16px;
-  color: ${({percent}) => (percent ? theme.colors.red : theme.colors.green)};
+  color: ${({percent}) =>
+    percent ? ({theme}) => theme.colors.red : ({theme}) => theme.colors.green};
 `;
