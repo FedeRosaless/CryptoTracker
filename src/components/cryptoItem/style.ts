@@ -71,6 +71,6 @@ export const ImageValue = styled.Image`
 
 export const Percent = styled.Text<PercentProps>`
   font-size: 16px;
-  color: ${({percent}) =>
-    percent ? ({theme}) => theme.colors.red : ({theme}) => theme.colors.green};
+  color: ${({percent, theme}) =>
+    percent ? theme.colors.red : theme.colors.green};
 `;
