@@ -22,11 +22,13 @@ interface Props {
   crypto: Crypto;
 }
 
-const CryptoItem = ({crypto: {name, symbol, img, market_data}}: Props) => (
+const numberFormatter = Intl.NumberFormat('en-US');
+
+const CryptoItem = ({crypto: {name, symbol, id, market_data}}: Props) => (
   <>
     <Container>
       <LogoContainer>
-        <Logo source={img} />
+        <Logo source={{uri: `https://messari.io/asset-images/${id}/128.png`}} />
         <NamesContainer>
           <Name>{name}</Name>
           <Symbol>{symbol}</Symbol>
@@ -34,7 +36,9 @@ const CryptoItem = ({crypto: {name, symbol, img, market_data}}: Props) => (
       </LogoContainer>
 
       <ValueContainer>
-        <Value>${market_data?.price_usd}</Value>
+        <Value>
+          ${numberFormatter.format(market_data?.price_usd.toFixed(2))}
+        </Value>
         <ArrowContainer>
           <ImageValue
             source={
@@ -44,7 +48,7 @@ const CryptoItem = ({crypto: {name, symbol, img, market_data}}: Props) => (
             }
           />
           <Percent percent={market_data?.percent_change_usd_last_24_hours < 0}>
-            {Math.abs(market_data?.percent_change_usd_last_24_hours)}%
+            {Math.abs(market_data?.percent_change_usd_last_24_hours).toFixed(2)}
           </Percent>
         </ArrowContainer>
       </ValueContainer>
