@@ -1,12 +1,12 @@
 import {TouchableOpacity, FlatList} from 'react-native';
 import {BlueText, Container, ContainerFlatList} from './style';
-import CryptoItem from '../../components/cryptoItem';
+import CryptoItem from '../../components/CryptoItem';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/header';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {getCrypto} from '../../store/reducer/RootReducer';
+import {getCrypto} from '../../store/actions';
 import {AppDispatch, RootState} from '../../store/index';
 
 const CryptoList = () => {

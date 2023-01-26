@@ -1,39 +1,11 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {Crypto} from 'interfaces';
+import {createSlice} from '@reduxjs/toolkit';
+import {CryptoState} from '../types';
+import {getCrypto} from '../../store/actions';
 
 const initialState = {
-  cryptos: [] as Crypto[],
+  cryptos: [],
   loading: false,
-};
-
-export const getCrypto = createAsyncThunk(
-  'crypto/getCrypto',
-  async (name: string) => {
-    try {
-      const {data} = await fetch(
-        `${process.env.REACT_APP_BASE_URL}${name}/metrics`,
-      ).then(res => res.json());
-      return data;
-    } catch (error) {
-      return error;
-    }
-  },
-);
-
-export const updateCrypto = createAsyncThunk(
-  'crypto/updateCrypto',
-  async (name: string[]) => {
-    const value: Crypto[] = [];
-    for (let i = 0; i < name.length; i++) {
-      const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}${name[i]}/metrics`,
-      );
-      value.push((await response.json()).data);
-    }
-
-    return value;
-  },
-);
+} as CryptoState;
 
 const cryptoSlice = createSlice({
   name: 'crypto',
@@ -50,9 +22,6 @@ const cryptoSlice = createSlice({
       })
       .addCase(getCrypto.rejected, state => {
         state.loading = false;
-      })
-      .addCase(updateCrypto.fulfilled, (state, action) => {
-        state.cryptos = action.payload;
       });
   },
 });
