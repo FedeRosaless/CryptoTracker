@@ -23,7 +23,6 @@ interface Props {
 }
 
 const numberFormatter = Intl.NumberFormat('en-US');
-
 const CryptoItem = ({crypto: {name, symbol, id, market_data}}: Props) => (
   <>
     <Container>
@@ -49,6 +48,7 @@ const CryptoItem = ({crypto: {name, symbol, id, market_data}}: Props) => (
           />
           <Percent percent={market_data?.percent_change_usd_last_24_hours < 0}>
             {Math.abs(market_data?.percent_change_usd_last_24_hours).toFixed(2)}
+            %
           </Percent>
         </ArrowContainer>
       </ValueContainer>
