@@ -13,7 +13,7 @@ const CryptoList = () => {
   const {navigate} = useNavigation();
   const dispatch = useDispatch<AppDispatch>();
   const crypto = useSelector(
-    (state: RootState) => state.selectedCrypto.cryptos,
+    ({selectedCrypto}: RootState) => selectedCrypto.cryptos,
   );
 
   useEffect(() => {
