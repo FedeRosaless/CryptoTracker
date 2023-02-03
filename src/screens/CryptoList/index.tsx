@@ -4,21 +4,14 @@ import CryptoItem from '../../components/CryptoItem';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/header';
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
-import {getCrypto} from '../../store/actions';
-import {AppDispatch, RootState} from '../../store/index';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/index';
 
 const CryptoList = () => {
   const {navigate} = useNavigation();
-  const dispatch = useDispatch<AppDispatch>();
   const crypto = useSelector(
     ({selectedCrypto}: RootState) => selectedCrypto.cryptos,
   );
-
-  useEffect(() => {
-    dispatch(getCrypto('bitcoin'));
-  }, []);
 
   return (
     <Container>
