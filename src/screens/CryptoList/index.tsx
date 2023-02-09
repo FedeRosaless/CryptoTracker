@@ -13,10 +13,6 @@ const CryptoList = () => {
     selectedCrypto: {cryptos},
   } = useSelector((state: RootState) => state);
 
-  // const crypto = useSelector(
-  //   ({selectedCrypto: {cryptos}}: RootState) => cryptos,
-  // );
-
   return (
     <Container>
       <Header />

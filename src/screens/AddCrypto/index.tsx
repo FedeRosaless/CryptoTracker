@@ -23,10 +23,6 @@ const AddCrypto = () => {
     selectedCrypto: {cryptos},
   } = useSelector((state: RootState) => state);
 
-  // const crypto = useSelector(
-  //   ({selectedCrypto: {cryptos}}: RootState) => cryptos,
-  // );
-
   const dispatch = useDispatch<AppDispatch>();
 
   const findDuplicate = () =>
