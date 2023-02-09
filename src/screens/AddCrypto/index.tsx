@@ -1,68 +1,70 @@
 import {Modal, TouchableOpacity, Alert} from 'react-native';
 import {useState} from 'react';
-import {CryptoInput, AddText, BackText, ModalText, Touchable} from './style';
+import {CryptoInput, AddText, BackText, ButtonText, Touchable} from './style';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../store';
 import {useNavigation} from '@react-navigation/native';
 import {getCrypto} from '../../store/actions';
-import theme from '../../theme';
 
 const AddCrypto = () => {
-  const [text, onChangeText] = useState('');
-  const [borderColor, setBorderColor] = useState(theme.colors.borderGray);
+  const [text, setText] = useState('');
   const {navigate} = useNavigation();
+  const [focused, setFocused] = useState(false);
 
-  const cryptos = useSelector(
-    (state: RootState) => state.selectedCrypto.cryptos,
-  );
+  const handleBlurInput = () => {
+    setFocused(false);
+  };
+
+  const handleFocusInput = () => {
+    setFocused(true);
+  };
+
+  const {
+    selectedCrypto: {cryptos},
+  } = useSelector((state: RootState) => state);
+
+  // const crypto = useSelector(
+  //   ({selectedCrypto: {cryptos}}: RootState) => cryptos,
+  // );
+
   const dispatch = useDispatch<AppDispatch>();
 
-  const findDuplicate = () => {
-    const res = cryptos.find(e => {
-      return (
+  const findDuplicate = () =>
+    cryptos.find(
+      e =>
         e.name.toLowerCase() === text.toLowerCase() ||
-        e.symbol.toLowerCase() === text.toLowerCase()
-      );
-    });
-    return res;
-  };
+        e.symbol.toLowerCase() === text.toLowerCase(),
+    );
 
   const handleCrypto = () => {
     try {
-      if (!text) {
-        Alert.alert('Warning', 'Crypto is required');
-      } else if (findDuplicate()) {
+      if (findDuplicate()) {
         Alert.alert('Error', 'Crypto already displayed');
       } else {
         dispatch(getCrypto(text));
-        onChangeText('');
+        setText('');
         navigate('CryptoList');
       }
     } catch (err) {
       return err;
     }
   };
+
   return (
     <Modal animationType="fade">
-      <TouchableOpacity onPress={() => navigate('CryptoList' as never)}>
+      <TouchableOpacity onPress={() => navigate('CryptoList')}>
         <BackText>&lt; Back to list</BackText>
       </TouchableOpacity>
       <AddText>Add a Cryptocurrency</AddText>
       <CryptoInput
-        onBlur={() => setBorderColor(theme.colors.borderGray)}
-        onFocus={() => setBorderColor(theme.colors.yellow)}
-        style={{borderColor}}
-        onChangeText={onChangeText}
+        theme_focus={focused}
+        onChangeText={setText}
+        onFocus={handleFocusInput}
+        onBlur={handleBlurInput}
         placeholder="Use a name or ticker symbol..."
       />
-      <Touchable onPress={handleCrypto}>
-        <ModalText
-          style={{
-            color:
-              text === '' ? theme.colors.borderGray : theme.colors.blueGray,
-          }}>
-          Add
-        </ModalText>
+      <Touchable onPress={handleCrypto} disabled={text.length < 1}>
+        <ButtonText>Add</ButtonText>
       </Touchable>
     </Modal>
   );

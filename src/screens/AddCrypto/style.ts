@@ -5,22 +5,24 @@ export const Container = styled.View`
 `;
 
 export const CryptoInput = styled.TextInput`
-  border: 2px solid ${({theme}) => theme.colors.gray};
+  border: 2px solid
+    ${({theme, theme_focus}) =>
+      theme_focus ? theme.colors.yellow : theme.colors.gray};
   width: 90%;
   height: 60px;
-  position: relative;
+  display: flex;
   top: 29%;
   margin: 5%;
   border-radius: 6px;
   padding-left: 10px;
   font-size: 17px;
-  background-color: #f1f1f154;
+  background-color: ${({theme}) => theme.colors.white};
 `;
 
 export const AddText = styled.Text`
   font-size: 26px;
   color: ${({theme}) => theme.colors.darkGray};
-  position: relative;
+  display: flex;
   top: 28.5%;
   left: 6%;
   line-height: 30px;
@@ -30,13 +32,13 @@ export const AddText = styled.Text`
 `;
 
 export const BackText = styled.Text`
-  font-Size: 17px;
-  line-Height: 24px;
-  font-Weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 400;
   color: ${({theme}) => theme.colors.blueGray};
-  padding-Left: 16px;
-  margin-Top: 14px
-  font-Family: Inter;
+  padding-left: 16px;
+  margin-top: 14px;
+  font-family: Inter;
 `;
 
 export const OpenModalText = styled.Text`
@@ -48,20 +50,22 @@ export const OpenModalText = styled.Text`
   font-family: Inter;
 `;
 
-export const ModalText = styled.Text`
+export const ButtonText = styled.Text`
   font-size: 18px;
-  color: ${({theme}) => theme.colors.gray};
   background-color: ${({theme}) => theme.colors.yellow};
   text-align: center;
   text-align-vertical: center;
-  width: 160px;
-  height: 48px;
-  border-radius: 6px;
+  border-radius: 4px;
+  padding-bottom: 13px;
+  padding-top: 13px;
+  left: 13px;
+  display: flex;
 `;
 
 export const Touchable = styled.TouchableOpacity`
-  width: 155px;
-  height: 48px;
-  left: 54%;
+  padding-left: 160px;
+  padding-right: 91px;
+  margin-top: 5px;
+  left: 14%;
   top: 28%;
 `;

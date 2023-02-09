@@ -9,16 +9,20 @@ import {RootState} from '../../store/index';
 
 const CryptoList = () => {
   const {navigate} = useNavigation();
-  const crypto = useSelector(
-    ({selectedCrypto}: RootState) => selectedCrypto.cryptos,
-  );
+  const {
+    selectedCrypto: {cryptos},
+  } = useSelector((state: RootState) => state);
+
+  // const crypto = useSelector(
+  //   ({selectedCrypto: {cryptos}}: RootState) => cryptos,
+  // );
 
   return (
     <Container>
       <Header />
       <ContainerFlatList>
         <FlatList
-          data={crypto}
+          data={cryptos}
           keyExtractor={({id}) => id}
           renderItem={({item}) => <CryptoItem crypto={item} />}
           ListFooterComponent={
