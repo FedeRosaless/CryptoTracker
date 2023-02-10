@@ -17,7 +17,7 @@ const CryptoList = () => {
 
   useEffect(() => {
     const time = setInterval(() => {
-      dispatch(updateCrypto(cryptos.map(c => c.name)));
+      dispatch(updateCrypto(cryptos.map(({name}) => name)));
     }, 4000);
     return () => clearInterval(time);
   });

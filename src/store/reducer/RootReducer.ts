@@ -23,8 +23,8 @@ const cryptoSlice = createSlice({
       .addCase(getCrypto.rejected, state => {
         state.loading = false;
       })
-      .addCase(updateCrypto.fulfilled, (state, action) => {
-        state.cryptos = action.payload;
+      .addCase(updateCrypto.fulfilled, (state, {payload}) => {
+        state.cryptos = payload;
       });
   },
 });
