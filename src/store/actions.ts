@@ -17,9 +17,9 @@ export const getCrypto = createAsyncThunk(
 export const updateCrypto = createAsyncThunk(
   'crypto/updateCrypto',
   async (name: string[]) => {
-    let value: Crypto[] = [];
+    const value: Crypto[] = [];
     for (let i = 0; i < name.length; i++) {
-      let response = await fetch(
+      const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}${name[i]}/metrics`,
       );
       value.push((await response.json()).data);
