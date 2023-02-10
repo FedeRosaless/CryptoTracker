@@ -13,3 +13,18 @@ export const getCrypto = createAsyncThunk(
     }
   },
 );
+
+export const updateCrypto = createAsyncThunk(
+  'crypto/updateCrypto',
+  async (name: string[]) => {
+    const value: Crypto[] = [];
+    for (let i = 0; i < name.length; i++) {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}${name[i]}/metrics`,
+      );
+      value.push((await response.json()).data);
+    }
+
+    return value;
+  },
+);

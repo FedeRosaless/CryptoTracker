@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {CryptoState} from '../types';
-import {getCrypto} from '../../store/actions';
+import {getCrypto, updateCrypto} from '../../store/actions';
 
 const initialState = {
   cryptos: [],
@@ -22,6 +22,9 @@ const cryptoSlice = createSlice({
       })
       .addCase(getCrypto.rejected, state => {
         state.loading = false;
+      })
+      .addCase(updateCrypto.fulfilled, (state, {payload}) => {
+        state.cryptos = payload;
       });
   },
 });
